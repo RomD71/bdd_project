@@ -1,0 +1,31 @@
+OC\projetBddBundle\Entity\Categorie:
+    type: entity
+    table: categorie
+    id:
+        idCategorie:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_Categorie
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomCategorie:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: nom_Categorie
+    manyToMany:
+        idMotCle:
+            targetEntity: MotCle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: idCategorie
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

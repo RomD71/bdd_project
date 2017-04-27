@@ -1,0 +1,51 @@
+OC\projetBddBundle\Entity\Auteur:
+    type: entity
+    table: auteur
+    indexes:
+        FK_AUTEUR_id_Article:
+            columns:
+                - id_Article
+    id:
+        idAuteur:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_Auteur
+            generator:
+                strategy: IDENTITY
+    fields:
+        pseudoAuteur:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+            column: Pseudo_Auteur
+        mdp:
+            type: string
+            nullable: false
+            length: 25
+            options:
+                fixed: false
+            column: Mdp
+        mail:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: Mail
+    manyToOne:
+        idArticle:
+            targetEntity: Article
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_Article:
+                    referencedColumnName: id_Article
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

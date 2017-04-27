@@ -1,0 +1,66 @@
+OC\projetBddBundle\Entity\Article:
+    type: entity
+    table: article
+    indexes:
+        FK_ARTICLE_id_Fichier:
+            columns:
+                - id_Fichier
+    id:
+        idArticle:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_Article
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: Titre
+        contenuArticle:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: contenu_Article
+        datePublication:
+            type: date
+            nullable: false
+            column: date_Publication
+    manyToOne:
+        idFichier:
+            targetEntity: Fichier
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_Fichier:
+                    referencedColumnName: id_Fichier
+            orphanRemoval: false
+    manyToMany:
+        idMotCle:
+            targetEntity: MotCle
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idArticle
+            joinTable:
+                name: associer
+                joinColumns:
+                    -
+                        name: id_Article
+                        referencedColumnName: id_Article
+                inverseJoinColumns:
+                    -
+                        name: id_Mot_Cle
+                        referencedColumnName: id_Mot_Cle
+            orderBy: null
+    lifecycleCallbacks: {  }

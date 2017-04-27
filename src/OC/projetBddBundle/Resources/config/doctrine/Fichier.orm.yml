@@ -1,0 +1,28 @@
+OC\projetBddBundle\Entity\Fichier:
+    type: entity
+    table: fichier
+    id:
+        idFichier:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_Fichier
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomFichier:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: nom_Fichier
+        type:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

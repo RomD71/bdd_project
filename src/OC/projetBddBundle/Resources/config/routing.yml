@@ -1,0 +1,3 @@
+bdd_homepage:
+    path:     /index
+    defaults: { _controller: BddBundle:Default:index }

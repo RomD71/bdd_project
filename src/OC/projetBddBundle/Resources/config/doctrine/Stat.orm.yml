@@ -1,0 +1,43 @@
+OC\projetBddBundle\Entity\Stat:
+    type: entity
+    table: stat
+    indexes:
+        FK_STAT_id_Article:
+            columns:
+                - id_Article
+    id:
+        idStat:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_Stat
+            generator:
+                strategy: IDENTITY
+    fields:
+        libStat:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+            column: lib_Stat
+        compteur:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: Compteur
+    manyToOne:
+        idArticle:
+            targetEntity: Article
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_Article:
+                    referencedColumnName: id_Article
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

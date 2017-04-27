@@ -1,0 +1,48 @@
+OC\projetBddBundle\Entity\MotCle:
+    type: entity
+    table: mot_cle
+    id:
+        idMotCle:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_Mot_Cle
+            generator:
+                strategy: IDENTITY
+    fields:
+        libMotCle:
+            type: string
+            nullable: false
+            length: 60
+            options:
+                fixed: false
+            column: lib_Mot_Cle
+    manyToMany:
+        idCategorie:
+            targetEntity: Categorie
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idMotCle
+            joinTable:
+                name: appartient
+                joinColumns:
+                    -
+                        name: id_Mot_Cle
+                        referencedColumnName: id_Mot_Cle
+                inverseJoinColumns:
+                    -
+                        name: id_Categorie
+                        referencedColumnName: id_Categorie
+            orderBy: null
+        idArticle:
+            targetEntity: Article
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: idMotCle
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
