@@ -15,11 +15,10 @@ class HomeController extends Controller
             ->getRepository('BddBundle:Article')
             ->findAll();
 
+        dump($repos);
         $content = $this->get('templating')->render('BddBundle:Home:index.html.twig',[
             'article' => $repos,
         ]);
         return new Response($content);
-
-//        return $this->render('BddBundle:Home:index.html.twig');
     }
 }
