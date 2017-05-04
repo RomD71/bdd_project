@@ -20,7 +20,5 @@ class HomeController extends Controller
             'article' => $repos,
         ]);
         return new Response($content);
-
-
     }
 }
