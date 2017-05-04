@@ -16,9 +16,11 @@ class HomeController extends Controller
             ->findAll();
 
         dump($repos);
-        $content = $this->get('templating')->render('BddBundle:Home:index.html.twig',[
+        $content = $this->get('templating')->render('BddBundle:Home:index.html.twig', [
             'article' => $repos,
         ]);
         return new Response($content);
+
+
     }
 }
