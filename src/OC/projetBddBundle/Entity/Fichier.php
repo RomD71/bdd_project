@@ -2,23 +2,36 @@
 
 namespace OC\projetBddBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
+ *
  * Fichier
+ * @ORM\Table(name="fichier")
+ * @ORM\Entity(repositoryClass="OC\projetBddBundle\Repository\fichierRepository")
+ *
  */
 class Fichier
 {
     /**
      * @var integer
+     * @ORM\Column(name="id_Fichier", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idFichier;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom_Fichier", type="string")
      */
     private $nomFichier;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="type", type="string")
      */
     private $type;
 

@@ -2,23 +2,39 @@
 
 namespace OC\projetBddBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
+ *
  * Categorie
+ * @ORM\Table(name="categorie")
+ * @ORM\Entity(repositoryClass="OC\projetBddBundle\Repository\categorieRepository")
+ *
  */
 class Categorie
 {
     /**
      * @var integer
+     * @ORM\Column(name="id_Categorie", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idCategorie;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom_Categorie", type="string")
      */
     private $nomCategorie;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="MotCle")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Mot_Cle", referencedColumnName="id_Mot_Cle")
+     * })
      */
     private $idMotCle;
 

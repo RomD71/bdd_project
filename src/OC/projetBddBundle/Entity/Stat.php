@@ -2,28 +2,46 @@
 
 namespace OC\projetBddBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
+ *
  * Stat
+ * @ORM\Table(name="stat")
+ * @ORM\Entity(repositoryClass="OC\projetBddBundle\Repository\statRepository")
+ *
  */
 class Stat
 {
     /**
      * @var integer
+     * @ORM\Column(name="id_Stat", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idStat;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="lib_Stat", type="string")
      */
     private $libStat;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="Compteur", type="integer")
      */
     private $compteur;
 
     /**
      * @var \OC\projetBddBundle\Entity\Article
+     *
+     * @ORM\OneToMany(targetEntity="Article")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Article", referencedColumnName="id_Article")
+     * })
      */
     private $idArticle;
 

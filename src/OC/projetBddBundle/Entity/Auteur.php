@@ -2,33 +2,53 @@
 
 namespace OC\projetBddBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
+ *
  * Auteur
+ * @ORM\Table(name="auteur")
+ * @ORM\Entity(repositoryClass="OC\projetBddBundle\Repository\auteurRepository")
+ *
  */
 class Auteur
 {
     /**
      * @var integer
+     * @ORM\Column(name="id_Auteur", type="integer")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idAuteur;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="Pseudo_Auteur", type="string")
      */
     private $pseudoAuteur;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="Mdp", type="string")
      */
     private $mdp;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="Mail", type="string")
      */
     private $mail;
 
     /**
      * @var \OC\projetBddBundle\Entity\Article
+     *
+     * @ORM\OneToMany(targetEntity="Article")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Article", referencedColumnName="id_Article")
+     * })
      */
     private $idArticle;
 
