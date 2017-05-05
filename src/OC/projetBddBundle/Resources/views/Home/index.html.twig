@@ -1,6 +1,10 @@
 <html>
 <body>
-<h1>VOILA CA MARCHE !!!</h1><br/><br/>
+<h1>Liste des article !!!</h1><br/><br/>
+
+
+{{ form(formArticle) }}<br/>
+
 <table border="1">
     <tr>
         <th>ID Article</th>
@@ -13,7 +17,7 @@
             <td>{{ item.idArticle }}</td>
             <td>{{ item.titre }}</td>
             <td>{{ item.contenuArticle }}</td>
-            <td>{{ item.datePublication|date("m/d/Y") }}</td>
+            <td>{{ item.datePublication|date("d/m/Y") }}</td>
         </tr>
     {% endfor %}
 </table>
